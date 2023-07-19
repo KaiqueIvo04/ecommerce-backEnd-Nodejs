@@ -1,4 +1,5 @@
 const Express = require('express');
+const cors = require('cors');
 
 const server = new Express();
 
@@ -9,7 +10,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 server.use(Express.json());
-
+server.use(cors());
 server.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     next();
